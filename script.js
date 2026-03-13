@@ -40,7 +40,7 @@ function initLive2D() {
         L2Dwidget.init({
             // 使用 CDN 上的模型
             model: {
-                jsonPath: 'https://cdn.jsdelivr.net/npm/live2d-widget-model-rem@1.0.5/assets/rem.model.json',
+                jsonPath: 'https://cdn.jsdelivr.net/npm/live02d-widget-model-rem@1.0.5/assets/rem.model.json',
                 scale: 1
             },
             display: {
