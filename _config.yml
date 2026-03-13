@@ -1,0 +1,25 @@
+# GitHub Pages 配置
+title: 柳州模拟联合国
+description: 柳州模拟联合国官方网站 - 以青年之声，议世界之事
+url: ""
+baseurl: ""
+
+# 构建设置
+markdown: kramdown
+highlighter: rouge
+
+# 排除文件
+exclude:
+  - README.md
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+
+# 默认设置
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default

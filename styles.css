@@ -1,0 +1,680 @@
+/* ============================================
+   柳州模拟联合国 - 简约艺术风格
+   蓝白主色调 | 透明亚克力材质 | 无圆角
+   ============================================ */
+
+/* CSS 变量 */
+:root {
+    --primary-blue: #1a5fb4;
+    --primary-blue-light: #3584e4;
+    --primary-blue-dark: #0d3b7a;
+    --white: #ffffff;
+    --white-transparent: rgba(255, 255, 255, 0.85);
+    --white-glass: rgba(255, 255, 255, 0.25);
+    --blue-glass: rgba(26, 95, 180, 0.15);
+    --blue-glass-dark: rgba(26, 95, 180, 0.25);
+    --text-dark: #1a1a2e;
+    --text-medium: #4a4a5a;
+    --text-light: #6a6a7a;
+    --border-light: rgba(255, 255, 255, 0.3);
+    --border-blue: rgba(26, 95, 180, 0.3);
+    --shadow-soft: 0 8px 32px rgba(26, 95, 180, 0.1);
+    --shadow-medium: 0 8px 32px rgba(26, 95, 180, 0.15);
+    --shadow-strong: 0 12px 48px rgba(26, 95, 180, 0.2);
+}
+
+/* 基础重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #e8f0f8 0%, #d4e4f4 50%, #c8dcf0 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   导航栏
+   ============================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--white-transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: var(--shadow-soft);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo-icon {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-medium);
+    font-weight: 500;
+    font-size: 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-blue);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   首页横幅
+   ============================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 100px 24px 60px;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--primary-blue-dark);
+    margin-bottom: 16px;
+    letter-spacing: 8px;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--primary-blue);
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.hero-description {
+    font-size: 24px;
+    color: var(--text-medium);
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* 按钮样式 */
+.btn {
+    display: inline-block;
+    padding: 14px 36px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+}
+
+.btn-primary {
+    background: var(--primary-blue);
+    color: var(--white);
+    box-shadow: 0 4px 16px rgba(26, 95, 180, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--primary-blue-dark);
+    box-shadow: 0 6px 24px rgba(26, 95, 180, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* 装饰性玻璃面板 */
+.hero-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.glass-panel {
+    position: absolute;
+    background: var(--blue-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-blue);
+}
+
+.panel-1 {
+    width: 300px;
+    height: 300px;
+    top: 15%;
+    left: 10%;
+    transform: rotate(15deg);
+}
+
+.panel-2 {
+    width: 200px;
+    height: 400px;
+    top: 30%;
+    right: 8%;
+    transform: rotate(-10deg);
+}
+
+.panel-3 {
+    width: 250px;
+    height: 250px;
+    bottom: 20%;
+    left: 20%;
+    transform: rotate(25deg);
+}
+
+/* ============================================
+   通用区块样式
+   ============================================ */
+.section {
+    padding: 100px 24px;
+    position: relative;
+}
+
+.section-alt {
+    background: linear-gradient(180deg, transparent 0%, rgba(26, 95, 180, 0.03) 50%, transparent 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-blue-dark);
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: 4px;
+}
+
+/* ============================================
+   玻璃卡片 - 亚克力材质效果
+   ============================================ */
+.glass-card {
+    background: var(--white-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-light);
+    padding: 40px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-4px);
+}
+
+/* ============================================
+   关于我们
+   ============================================ */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.glass-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--primary-blue-dark);
+    margin-bottom: 16px;
+}
+
+.glass-card p {
+    color: var(--text-medium);
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+/* ============================================
+   大会信息
+   ============================================ */
+.conference-info {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+}
+
+.info-card h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-blue-dark);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-blue);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.info-value {
+    font-weight: 600;
+    color: var(--primary-blue-dark);
+}
+
+.committee-list h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-blue-dark);
+    margin-bottom: 30px;
+}
+
+.committee-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.committee-item {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.committee-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-blue-dark);
+}
+
+.committee-topic {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+/* ============================================
+   联系我们
+   ============================================ */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.contact-card h3,
+.message-card h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--primary-blue-dark);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-blue);
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-icon {
+    font-size: 28px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--blue-glass);
+    border: 1px solid var(--border-blue);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contact-label {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+.contact-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-blue-dark);
+}
+
+/* 表单样式 */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--border-blue);
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(26, 95, 180, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-light);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ============================================
+   页脚
+   ============================================ */
+.footer {
+    background: var(--primary-blue-dark);
+    color: var(--white);
+    padding: 60px 24px 30px;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+}
+
+.footer-text {
+    font-size: 15px;
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+.footer-copyright {
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+/* ============================================
+   Live2D 看板娘
+   ============================================ */
+.live2d-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    width: 280px;
+    height: 280px;
+    pointer-events: none;
+}
+
+#live2d-canvas {
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+.live2d-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white-transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-light);
+    padding: 12px 18px;
+    font-size: 13px;
+    color: var(--text-dark);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 10px;
+}
+
+.live2d-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.live2d-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: var(--white-transparent);
+}
+
+/* ============================================
+   响应式设计
+   ============================================ */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .conference-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .committee-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-title {
+        font-size: 36px;
+        letter-spacing: 4px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .hero-description {
+        font-size: 18px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .glass-card {
+        padding: 24px;
+    }
+    
+    .live2d-container {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .section {
+        padding: 60px 16px;
+    }
+    
+    .panel-1,
+    .panel-2,
+    .panel-3 {
+        display: none;
+    }
+}
+
+/* ============================================
+   动画效果
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.glass-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.about-grid .glass-card:nth-child(1) { animation-delay: 0.1s; }
+.about-grid .glass-card:nth-child(2) { animation-delay: 0.2s; }
+.about-grid .glass-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(26, 95, 180, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue-dark);
+}
